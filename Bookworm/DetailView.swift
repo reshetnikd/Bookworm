@@ -44,6 +44,8 @@ struct DetailView: View {
                     .font(.largeTitle)
                 
                 Spacer()
+                
+                Text(self.showDate())
             }
         }
         .navigationBarTitle(Text(book.title ?? "Unknown Book"), displayMode: .inline)
@@ -66,6 +68,16 @@ struct DetailView: View {
         // uncomment this line if you want to make the deletion permanent
         // try? self.moc.save()
         presentationMode.wrappedValue.dismiss()
+    }
+    
+    func showDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        // US English locale (en_US)
+        dateFormatter.locale = Locale(identifier: "en_US")
+        
+        return dateFormatter.string(from: book.date!)
     }
 }
 

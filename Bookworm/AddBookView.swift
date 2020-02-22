@@ -44,9 +44,10 @@ struct AddBookView: View {
                         let newBook = Book(context: self.moc)
                         newBook.title = self.title
                         newBook.author = self.author
-                        newBook.genre = self.genre
+                        newBook.genre = self.genre == "" ? self.genres[self.genres.startIndex] : self.genre
                         newBook.review = self.review
                         newBook.rating = Int16(self.rating)
+                        newBook.date = Date()
                         
                         try? self.moc.save()
                         self.presentationMode.wrappedValue.dismiss()
