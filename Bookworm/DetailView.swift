@@ -77,7 +77,7 @@ struct DetailView: View {
         // US English locale (en_US)
         dateFormatter.locale = Locale(identifier: "en_US")
         
-        return dateFormatter.string(from: book.date!)
+        return dateFormatter.string(from: book.date ?? Date())
     }
 }
 
